@@ -13,7 +13,7 @@ OAuth.registerService('Nylas', 2, null, function(query) {
       accessToken: OAuth.sealSecret(respData.access_token),
       email: respData.email_address,
       provider: respData.provider,
-      organization_unit: respData.organization_unit,
+      organization_unit: namespace.organization_unit,
       name: namespace.name
     },
     options: {profile: {email: respData.email_address, name: namespace.name}}
