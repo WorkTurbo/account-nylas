@@ -27,16 +27,13 @@ Nylas.requestCredential = function (options, credentialRequestCompleteCallback) 
   }
   var credentialToken = Random.secret();
 
-  var scope = (options && options.requestPermissions) || [];
-  var flatScope = _.map(scope, encodeURIComponent).join('+');
-
   var loginStyle = OAuth._loginStyle('Nylas', config, options);
 
   var loginUrl =
     'https://api.nylas.com/oauth/authorize' +
     '?client_id=' + config.clientId +
     '&response_type=code'+
-    '&scope=' + flatScope +
+    '&scopes=email.modify,email.send,email.folders_and_labels,email.metadata' +
     '&redirect_uri=' + OAuth._redirectUri('Nylas', config) +
     '&state=' + OAuth._stateParam(loginStyle, credentialToken);
 
